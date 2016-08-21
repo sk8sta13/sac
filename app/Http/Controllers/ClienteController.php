@@ -19,7 +19,7 @@ class ClienteController extends Controller
                 return response()->json(['id' => '', 'nome' => '', 'email' => '', 'telefone' => '']);
             }
         } else {
-            return view('404');
+            return view('errors.404');
         }
     }
 
@@ -29,7 +29,7 @@ class ClienteController extends Controller
             return view('clientes.create')
                 ->with(['nome' => $request->get('nome'), 'email' => $request->get('email')]);
         } else {
-            return view('404');
+            return view('errors.404');
         }
     }
 
@@ -56,7 +56,7 @@ class ClienteController extends Controller
                 ]);
             }
         } else {
-            return view('404');
+            return view('errors.404');
         }
     }
 }

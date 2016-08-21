@@ -57,8 +57,45 @@ class SacController extends Controller
 
         $data['chamados'] = $chamados->paginate(5);
 
-
         return view('chamados.index')
             ->with($data);
+    }
+
+    public function export(Request $request)
+    {
+        $chamados = Chamado::orderBy('updated_at', 'desc');
+
+        if ($request->get('email')) {
+            $chamados->whereHas('Cliente', function($query) use($request) {
+                $query->where('email', 'like', $request->get('email'));
+            });
+        }
+
+        if ($request->get('pedido')) {
+            $chamados->where('pedido_id', $request->get('pedido'));
+        }
+
+        switch ($request->get('tipo')) {
+            case 'html':
+                return view('chamados.' . $request->get('tipo'))
+                    ->with('chamados', $chamados->get());
+            break;
+            case 'csv':
+                $chamados = $chamados->get();
+                $csv = fopen('tmp/chamados.csv', 'w+');
+                fwrite($csv, utf8_decode("Nº Pedido;E-mail;Criado em;Ultima interação\n"));
+                foreach ($chamados as $chamado) {
+                    $line = $chamado->pedido_id;
+                    $line .= ';' . $chamado->cliente->email;
+                    $line .= ';' . utf8_decode($chamado->created_at->format('d/m/Y à\s H:i'));
+                    $line .= ';' . utf8_decode($chamado->updated_at->format('d/m/Y à\s H:i'));
+                    $line .= "\n";
+                    fwrite($csv, $line);
+                }
+                fclose($csv);
+
+                return \Response::download('tmp/chamados.csv', 'chamados.csv', ['content-type' => 'text/cvs']);
+            break;
+        }
     }
 }

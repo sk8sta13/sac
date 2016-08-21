@@ -14,7 +14,7 @@ class PedidoController extends Controller
             $pedido = Pedido::where('id', $request->get('id'))->get();
             return response()->json(['exists' => $pedido->count()]);
         } else {
-            return view('404');
+            return view('errors.404');
         }
     }
 }
