@@ -18,3 +18,4 @@ Route::get('/cliente/create', ['as' => 'cliente.create', 'uses' => 'ClienteContr
 Route::post('/cliente', ['as' => 'cliente.store', 'uses' => 'ClienteController@store']);
 Route::get('/getPedido', ['as' => 'pedido.exists', 'uses' => 'PedidoController@exists']);
 Route::get('/report', ['as' => 'chamado.report', 'uses' => 'SacController@report']);
+Route::get('/exportar', ['as' => 'chamado.export', 'uses' => 'SacController@export']);

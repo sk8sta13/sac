@@ -41,10 +41,10 @@
                                     <input type="hidden" name="_cliente" id="_cliente" value="">
                                 </div>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="pedido">Nº Pedido</label>
-                                    <input type="text" class="form-control" name="pedido" id="pedido" placeholder="Pedido" />
+                                    <input type="text" class="form-control" name="pedido" id="pedido" placeholder="Nº Pedido" />
                                 </div>
                             </div>
                             <div class="col-lg-2">
@@ -54,6 +54,21 @@
                                         <span class="glyphicon glyphicon-search"></span>
                                         Buscar
                                     </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label for="nome">&nbsp;</label>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Exportar <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/exportar?tipo=html" class="exportar" target="_blank">HTML</a></li>
+                                            <li><a href="/exportar?tipo=csv" class="exportar" target="_blank">CSV</a></li>
+                                            <li><a href="/exportar?tipo=pdf" class="exportar" target="_blank">PDF</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -101,6 +116,16 @@
         <script src="{{ asset('/js/ie10-viewport-bug-workaround.js') }}"></script>
         <script src="{{ asset('/js/jquery.min.js') }}"></script>
         <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('/js/jquery-confirm.js') }}"></script>
+        <script>
+            $(document).ready(function() {
+                $('.exportar').click(function(e) {
+                    //e.preventDefault()
+                    var href = $(this).attr('href');
+                    href += '&email=' + $('#email').val();
+                    href += '&pedido=' + $('#pedido').val();
+                    window.open(href, '_blank');
+                });
+            });
+        </script>
     </body>
 </html>

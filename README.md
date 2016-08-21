@@ -1,36 +1,27 @@
-# sac
-Tela de atendimento ao cliente.
+# Laravel PHP Framework
 
-##Instalação
+[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
+[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-```
-sudo git clone https://github.com/sk8sta13/sac.git
-sudo mv ./sac /var/www/sac
-sudo chmod 755 -Rf /var/www/sac/storage
-cd /var/www/sac
-sudo composer install
-```
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
-##Criando e preenchedo o banco de dados
+Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-Você pode configurar os dados de conexão do seu MySQL no arquivo "/var/www/sac/.env", os dados padrão são:
-host: localhost
-porta: 3306
-base de dados: sac
-usuário: root
-senha: 101010
+## Official Documentation
 
-Depois execute os seguintes comandos.
-```
-cd /var/www/sac
-sudo php artisan migrate
-sudo php artisan db:seed
-```
+Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-Pronto o banco de dados foi criado e uma massa de dados de teste foi criada.
+## Contributing
 
-##Observações
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
-* O VHost deve apontar para "/var/www/sac/public", se quiser tenho um ".sh" que cria vhosts, veja [aqui](https://github.com/sk8sta13/vhost).
-* Para acessar a listagem de chamados acesse "http://seu_vhost/report".
-* Qualquer dúvida entre em contato comigo.
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
