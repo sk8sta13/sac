@@ -97,7 +97,7 @@ class SacController extends Controller
                 return \Response::download('tmp/chamados.csv', 'chamados.csv', ['content-type' => 'text/cvs']);
             break;
             case 'pdf':
-                \PDF::loadView('chamados.html', ['chamados' => $chamados->get()])
+                return \PDF::loadView('chamados.html', ['chamados' => $chamados->get()])
                     ->stream('chamados.pdf');
             break;
         }
